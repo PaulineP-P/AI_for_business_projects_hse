@@ -1,0 +1,193 @@
+{
+  "name": "Workflow (n8n) ИИ-агент (в тг) + модель gemini",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "adbff8a6-6c96-4d01-ab82-720a81e72aaa",
+      "name": "Telegram Trigger",
+      "webhookId": "aedc7448-7c82-43ea-a46e-540beb674344",
+      "credentials": {
+        "telegramApi": {
+          "id": "ejoyqqInVyGlw9md",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "222b9bd9-afa6-41dd-9f8e-3fddf02c7b39",
+              "leftValue": "={{ $json.message.text }}",
+              "rightValue": "/start",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c947dd45-324d-4a8c-970e-93615ffdb258",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Привет! Я бот, который превращает сырой текст вакансии \nв красивый оформленный пост.  \n\n📌 Как пользоваться: \n1. Отправь мне текст вакансии (скопируй из HH, VK, Telegram) \n\n2. Я автоматически отформатирую его по шаблону \n\n3. Ты получишь готовый пост для публикации  \n\n📋 Что нужно отправить: любой текст с вакансией (должность, компанию, город, описание, требования, условия, контакты)  Пример: \"Вакансия: Инженер-технолог. Компания: Нефтесервис. Город: Нефтеюганск. Зарплата: от 100 000 руб...\"",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        416,
+        -96
+      ],
+      "id": "5bcabe41-5a3b-4aa9-9cea-a7602fd37d80",
+      "name": "Send Welcome",
+      "webhookId": "d5d19961-e47f-4047-8a11-e6db3bdb5dff",
+      "credentials": {
+        "telegramApi": {
+          "id": "ejoyqqInVyGlw9md",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cloud.flowiseai.com/api/v1/prediction/42e7eb3a-379a-4a60-a455-4e1cbc60c426",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $('Telegram Trigger').item.json.message.text }}"
+            },
+            {
+              "name": "overrideConfig",
+              "value": "={{ { sessionId: String($('Telegram Trigger').item.json.message.chat.id) } }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        416,
+        96
+      ],
+      "id": "e013c373-020f-4b5f-9557-226b10ed3933",
+      "name": "Flowise Request"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        624,
+        96
+      ],
+      "id": "61b38f72-03cd-4801-b99b-e952a860bba8",
+      "name": "Send Formatted Vacancy",
+      "webhookId": "b3cb4d7e-53eb-44de-b58a-8fc139798b69",
+      "credentials": {
+        "telegramApi": {
+          "id": "ejoyqqInVyGlw9md",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send Welcome",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Flowise Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flowise Request": {
+      "main": [
+        [
+          {
+            "node": "Send Formatted Vacancy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "542eca32-76c3-43f6-9d74-beab4b638797",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ddffd7edb3bbb5b8f886e45b298e8b4d7544fd15aeeeda4b3e26a1c1c16f0565"
+  },
+  "id": "p1MejGioX9rF221O",
+  "tags": []
+}
