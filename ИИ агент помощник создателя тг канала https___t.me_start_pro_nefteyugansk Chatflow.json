@@ -1,0 +1,384 @@
+{
+  "nodes": [
+    {
+      "id": "chatOpenRouter_0",
+      "position": {
+        "x": -185.11432432432437,
+        "y": 489.00040540540544
+      },
+      "type": "customNode",
+      "data": {
+        "id": "chatOpenRouter_0",
+        "label": "OpenRouter",
+        "version": 1,
+        "name": "chatOpenRouter",
+        "type": "ChatOpenRouter",
+        "baseClasses": [
+          "ChatOpenRouter",
+          "BaseChatOpenAI",
+          "BaseChatModel",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "category": "Chat Models",
+        "description": "Wrapper around Open Router Inference API",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "openRouterApi"
+            ],
+            "optional": true,
+            "id": "chatOpenRouter_0-input-credential-credential",
+            "display": true
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "string",
+            "placeholder": "openai/gpt-3.5-turbo",
+            "id": "chatOpenRouter_0-input-modelName-string",
+            "display": true
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "step": 0.1,
+            "default": 0.9,
+            "optional": true,
+            "id": "chatOpenRouter_0-input-temperature-number",
+            "display": true
+          },
+          {
+            "label": "Streaming",
+            "name": "streaming",
+            "type": "boolean",
+            "default": true,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenRouter_0-input-streaming-boolean",
+            "display": true
+          },
+          {
+            "label": "Allow Image Uploads",
+            "name": "allowImageUploads",
+            "type": "boolean",
+            "description": "Allow image input. Refer to the <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">docs</a> for more details.",
+            "default": false,
+            "optional": true,
+            "id": "chatOpenRouter_0-input-allowImageUploads-boolean",
+            "display": true
+          },
+          {
+            "label": "Max Tokens",
+            "name": "maxTokens",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenRouter_0-input-maxTokens-number",
+            "display": true
+          },
+          {
+            "label": "Top Probability",
+            "name": "topP",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenRouter_0-input-topP-number",
+            "display": true
+          },
+          {
+            "label": "Frequency Penalty",
+            "name": "frequencyPenalty",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenRouter_0-input-frequencyPenalty-number",
+            "display": true
+          },
+          {
+            "label": "Presence Penalty",
+            "name": "presencePenalty",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenRouter_0-input-presencePenalty-number",
+            "display": true
+          },
+          {
+            "label": "Timeout",
+            "name": "timeout",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenRouter_0-input-timeout-number",
+            "display": true
+          },
+          {
+            "label": "Base Path",
+            "name": "basepath",
+            "type": "string",
+            "optional": true,
+            "default": "https://openrouter.ai/api/v1",
+            "description": "Override the default base URL for the API, e.g., \"https://api.example.com/v2/",
+            "additionalParams": true,
+            "id": "chatOpenRouter_0-input-basepath-string",
+            "display": true
+          },
+          {
+            "label": "Base Options",
+            "name": "baseOptions",
+            "type": "json",
+            "optional": true,
+            "description": "Default headers to include with every request to the API.",
+            "additionalParams": true,
+            "id": "chatOpenRouter_0-input-baseOptions-json",
+            "display": true
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "chatOpenRouter_0-input-cache-BaseCache",
+            "display": true
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "modelName": "google/gemini-2.0-flash-001",
+          "temperature": "0.9",
+          "streaming": true,
+          "allowImageUploads": "",
+          "maxTokens": "",
+          "topP": "",
+          "frequencyPenalty": "",
+          "presencePenalty": "",
+          "timeout": "",
+          "basepath": "https://openrouter.ai/api/v1",
+          "baseOptions": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "chatOpenRouter_0-output-chatOpenRouter-ChatOpenRouter|BaseChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable",
+            "name": "chatOpenRouter",
+            "label": "ChatOpenRouter",
+            "description": "Wrapper around Open Router Inference API",
+            "type": "ChatOpenRouter | BaseChatOpenAI | BaseChatModel | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 673,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -185.11432432432437,
+        "y": 489.00040540540544
+      },
+      "dragging": false
+    },
+    {
+      "id": "bufferMemory_0",
+      "position": {
+        "x": 121.7829931502639,
+        "y": 186.380644599957
+      },
+      "type": "customNode",
+      "data": {
+        "id": "bufferMemory_0",
+        "label": "Buffer Memory",
+        "version": 2,
+        "name": "bufferMemory",
+        "type": "BufferMemory",
+        "baseClasses": [
+          "BufferMemory",
+          "BaseChatMemory",
+          "BaseMemory"
+        ],
+        "category": "Memory",
+        "description": "Retrieve chat messages stored in database",
+        "inputParams": [
+          {
+            "label": "Session Id",
+            "name": "sessionId",
+            "type": "string",
+            "description": "If not specified, a random id will be used. Learn <a target=\"_blank\" href=\"https://docs.flowiseai.com/memory#ui-and-embedded-chat\">more</a>",
+            "default": "",
+            "additionalParams": true,
+            "optional": true,
+            "id": "bufferMemory_0-input-sessionId-string",
+            "display": true
+          },
+          {
+            "label": "Memory Key",
+            "name": "memoryKey",
+            "type": "string",
+            "default": "chat_history",
+            "additionalParams": true,
+            "id": "bufferMemory_0-input-memoryKey-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "sessionId": "",
+          "memoryKey": "chat_history"
+        },
+        "outputAnchors": [
+          {
+            "id": "bufferMemory_0-output-bufferMemory-BufferMemory|BaseChatMemory|BaseMemory",
+            "name": "bufferMemory",
+            "label": "BufferMemory",
+            "description": "Retrieve chat messages stored in database",
+            "type": "BufferMemory | BaseChatMemory | BaseMemory"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 256,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 121.7829931502639,
+        "y": 186.380644599957
+      },
+      "dragging": false
+    },
+    {
+      "id": "conversationalAgent_0",
+      "position": {
+        "x": 471.3135431962742,
+        "y": 458.03381957885097
+      },
+      "type": "customNode",
+      "data": {
+        "id": "conversationalAgent_0",
+        "label": "Conversational Agent",
+        "version": 3,
+        "name": "conversationalAgent",
+        "type": "AgentExecutor",
+        "baseClasses": [
+          "AgentExecutor",
+          "BaseChain",
+          "Runnable"
+        ],
+        "category": "Agents",
+        "description": "Conversational agent for a chat model. It will utilize chat specific prompts",
+        "inputParams": [
+          {
+            "label": "System Message",
+            "name": "systemMessage",
+            "type": "string",
+            "rows": 4,
+            "default": "Assistant is a large language model trained by OpenAI.\n\nAssistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.\n\nAssistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.\n\nOverall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.",
+            "optional": true,
+            "additionalParams": true,
+            "id": "conversationalAgent_0-input-systemMessage-string",
+            "display": true
+          },
+          {
+            "label": "Max Iterations",
+            "name": "maxIterations",
+            "type": "number",
+            "optional": true,
+            "additionalParams": true,
+            "id": "conversationalAgent_0-input-maxIterations-number",
+            "display": true
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Allowed Tools",
+            "name": "tools",
+            "type": "Tool",
+            "list": true,
+            "id": "conversationalAgent_0-input-tools-Tool",
+            "display": true
+          },
+          {
+            "label": "Chat Model",
+            "name": "model",
+            "type": "BaseChatModel",
+            "id": "conversationalAgent_0-input-model-BaseChatModel",
+            "display": true
+          },
+          {
+            "label": "Memory",
+            "name": "memory",
+            "type": "BaseChatMemory",
+            "id": "conversationalAgent_0-input-memory-BaseChatMemory",
+            "display": true
+          },
+          {
+            "label": "Input Moderation",
+            "description": "Detect text that could generate harmful output and prevent it from being sent to the language model",
+            "name": "inputModeration",
+            "type": "Moderation",
+            "optional": true,
+            "list": true,
+            "id": "conversationalAgent_0-input-inputModeration-Moderation",
+            "display": true
+          }
+        ],
+        "inputs": {
+          "tools": "",
+          "model": "{{chatOpenRouter_0.data.instance}}",
+          "memory": "{{bufferMemory_0.data.instance}}",
+          "systemMessage": "Ты Telegram бот для форматирования вакансий, стажировок, проектов, форумов.\n\nИз текста пользователя выдели ключевую информацию и верни ТОЛЬКО в указанном формате. Никаких лишних слов, приветствий и пояснений.\n\nФормат вывода для вакансии:\n\n💼 ВАКАНСИЯ\n\nДолжность: [должность]\nКомпания: [компания]\nГород: [город]\n\n🔹Описание:\n[описание]\n\n🔹Задачи:\n- [задача 1]\n- [задача 2]\n\n🔹Требования:\n- [требование 1]\n- [требование 2]\n\n🔹Условия:\n- [условие 1]\n- [условие 2]\n\n🔹Зарплата:\n\n📞 Контакты: [контакты]\n\nФормат вывода для проекта/формута:\n\n✨  [название проекта/форума]  ✨\n\nНазвание: [название проекта/форума]\nОрганизатор: [компания/организатор]\nГород/Формат: [город или онлайн]\n\nОписание:\n[краткое описание]\n\nУсловия участия:\n• [условие 1]\n• [условие 2]\n• [условие 3]\n\nРезультаты/Преимущества:\n• [достижение 1]\n• [достижение 2]\n\n📅 Дедлайн: [дата]\n\n🔗 Подробнее: [ссылка]\n\nФормат вывода для стажировки:\n✨ [название стажировки/программы]  ✨ \n\nКомпания: [компания/организатор]\nФормат: [город / онлайн / гибрид]\n\nОписание:\n[краткое описание стажировки]\n\nЧто даёт стажировка:\n• [плюс 1]\n• [плюс 2]\n• [плюс 3]\n\nДля кого:\n• [требование 1]\n• [требование 2]\n• [требование 3]\n\n🎁 Бонусы:\n• [бонус 1]\n• [бонус 2]\n\n📅 Дедлайн: [дата]\n\n🔗 Подробнее: [ссылка]\n\nЕсли какой-то информации нет — пропусти блок полностью. Не выдумывай данные.\n\nВАЖНОЕ ПРАВИЛО:\n\nПеред форматированием проверь, является ли входящий текст вакансией.\nПризнаки вакансии: упоминание должности, компании, условий работы, \nзарплаты, требований или обязанностей.\n\nЕсли текст НЕ является вакансией (это приветствие, вопрос, \nкороткая фраза, случайный текст) — ответь РОВНО следующим текстом, \nбез изменений:\n\nПривет, я оформляю вакансии/стажировки/проекты в красивые посты.\n\nПришли мне текст вакансии - желательно с указанием:\n• должности\n• компании  \n• города\n• условий работы\n• требований\n\nИ я верну готовый пост для публикации ✨\n\nНе пытайся форматировать короткие фразы или приветствия и иное как вакансии.",
+          "inputModeration": "",
+          "maxIterations": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "conversationalAgent_0-output-conversationalAgent-AgentExecutor|BaseChain|Runnable",
+            "name": "conversationalAgent",
+            "label": "AgentExecutor",
+            "description": "Conversational agent for a chat model. It will utilize chat specific prompts",
+            "type": "AgentExecutor | BaseChain | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 436,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 471.3135431962742,
+        "y": 458.03381957885097
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "chatOpenRouter_0",
+      "sourceHandle": "chatOpenRouter_0-output-chatOpenRouter-ChatOpenRouter|BaseChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable",
+      "target": "conversationalAgent_0",
+      "targetHandle": "conversationalAgent_0-input-model-BaseChatModel",
+      "type": "buttonedge",
+      "id": "chatOpenRouter_0-chatOpenRouter_0-output-chatOpenRouter-ChatOpenRouter|BaseChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable-conversationalAgent_0-conversationalAgent_0-input-model-BaseChatModel"
+    },
+    {
+      "source": "bufferMemory_0",
+      "sourceHandle": "bufferMemory_0-output-bufferMemory-BufferMemory|BaseChatMemory|BaseMemory",
+      "target": "conversationalAgent_0",
+      "targetHandle": "conversationalAgent_0-input-memory-BaseChatMemory",
+      "type": "buttonedge",
+      "id": "bufferMemory_0-bufferMemory_0-output-bufferMemory-BufferMemory|BaseChatMemory|BaseMemory-conversationalAgent_0-conversationalAgent_0-input-memory-BaseChatMemory"
+    }
+  ]
+}
